@@ -49,6 +49,8 @@ void ItemList::insertItem(string Product, int Cost)
 
 int ItemList::printLinkedList()
 {
+	system("cls");
+	cout << "\n\n\n\n\n";
 	node* current = head;
 	int consoleWidth = GetConsoleWidth1();
 	int space = (consoleWidth - textLength) / 2;

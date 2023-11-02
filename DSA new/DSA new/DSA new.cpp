@@ -123,6 +123,7 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
         int discount = (fullCost * discountPercentage / 100);
         int price = fullCost - discount;
 
+        cout << endl;
         cout << setw(spaces) << "             " << "Discount ";
         cout << setw(spaces) << discount << endl;
         cout << endl;
@@ -131,6 +132,20 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
         cout << setw(spaces) << price << endl;
         cout << endl;
 
+        int cash;
+        cout << setw(spaces) << "             " << "Enter Cash: ";
+        cout << setw(spaces) << "";
+        cin >> cash;
+        cout << endl;
+        int balance;
+        balance = cash - price;
+        cout << setw(spaces) << "             " << "Blance : ";
+        cout << setw(spaces) << balance << endl;
+        cout << endl;
+
+        cout << setw(spaces) << "" << setw(spaces) << "Thank you for doing business with us." << endl;
+        cout << endl;
+        SetConsoleColor(FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED);
 
         return 0;
     }
@@ -149,6 +164,7 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
 
 int main()
 {
+    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
     int t = 1;
 
     string text = "        HAPUGALA FOODCITY        ";

@@ -18,4 +18,7 @@ public:
 	void insertItem(string Product, int Cost);
 	int printLinkedList();
 	void claerFile();
+	void deleteTask(int pos);
+	void deleteTaskFirst();
+	void deleteTaskLast();
 };

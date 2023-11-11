@@ -81,11 +81,13 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
     }
     else if (value == "1")
     {
-      /*  cout << setw(spaces) << "" << "        Plz enter what task dp you want to remove ?         ";
+        int deletePos;
+        cout << setw(spaces) << "" << "        Plz enter what task dp you want to remove ?         ";
+       
         cin >> deletePos;
         SetConsoleColor(FOREGROUND_GREEN);
         list.deleteTask(deletePos);
-        SetConsoleColor(FOREGROUND_BLUE);*/
+        SetConsoleColor(FOREGROUND_BLUE);
     }
     else if (value == "2")
     {
@@ -125,11 +127,11 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
 
         cout << endl;
         cout << setw(spaces) << "             " << "Discount ";
-        cout << setw(spaces) << discount << endl;
+        cout << setw(40) <<right<< discount << endl;
         cout << endl;
 
         cout << setw(spaces) << "             " << "Last Cost ";
-        cout << setw(spaces) << price << endl;
+        cout << setw(40) << right<<price << endl;
         cout << endl;
 
         int cash;

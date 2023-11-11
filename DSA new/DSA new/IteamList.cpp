@@ -55,29 +55,35 @@ int ItemList::printLinkedList()
 	int consoleWidth = GetConsoleWidth1();
 	int space = (consoleWidth - textLength) / 2;
 	int totalCost = 0;
-	if (size == 0) 
+
+	if (size == 0)
 	{
 		SetConsoleColor1(FOREGROUND_RED);
-		cout << setw(space) << "				No Items" << endl;
+		cout << setw(space) << "                 No Items" << endl;
 		SetConsoleColor1(FOREGROUND_GREEN);
 		return 0;
 	}
-	for (int i = 0; i < size; i++) 
+
+	cout << setw(space) << "         " << "ITEM" << setw(12) <<right<< "                                                   PRICE" << endl;
+	cout << setw(space) << "         " << "----" << setw(12) <<right<< "                                                   -----" << endl;
+
+	for (int i = 0; i < size; i++)
 	{
-		cout << setw(space) << "         [" << i + 1 << "] " << current->product;
-		cout << setw(space) << current->cost << endl;
+		cout << setw(space) << "         [" << i + 1 << "] " << setw(space) << left << current->product;
+		cout << setw(12) << right << current->cost << endl;
 		totalCost += current->cost;
 		current = current->next;
 	}
+
 	cout << endl;
 
 	SetConsoleColor1(FOREGROUND_RED);
-	cout << setw(space) << "            " << "TOTAL COST IS :";
-	cout << setw(space) << totalCost << endl;
+	cout << setw(space) << "         " << "TOTAL COST IS :";
+	cout << setw(40) << right << totalCost << endl;
 	SetConsoleColor1(FOREGROUND_GREEN);
 	return totalCost;
-
 }
+
 
 void ItemList::claerFile()
 {
@@ -99,3 +105,73 @@ void ItemList::claerFile()
 	size = 0;
 	cout << endl;
 }
+
+void ItemList::deleteTaskLast()
+{
+	if (size == 0) {
+		cout << "Your list is empty " << endl;
+	}
+	else {
+		node* temp = tail;
+		tail = temp->preve;
+		//tail->next = NULL;
+		delete temp;
+		size--;
+		//fileWrite();
+	}
+}
+
+void ItemList::deleteTaskFirst()
+{
+	if (size == 0) {
+		cout << "Your list is empty " << endl;
+	}
+	else {
+		node* temp = head;
+		head = temp->next;
+		head->preve = NULL;
+		delete temp;
+		size--;
+		//fileWrite();
+
+	}
+}
+
+void ItemList::deleteTask(int pos)
+{
+    if (pos <= 0 || pos > size)
+    {
+        cout << "Position is invalid" << endl;
+        return;
+    }
+
+    if (size == 1 || pos == 1)
+    {
+        deleteTaskFirst();
+    }
+    else if (pos == size)
+    {
+        deleteTaskLast();
+    }
+    else
+    {
+        node* current = head;
+        for (int i = 0; i < pos - 1; i++)
+        {
+            current = current->next;
+        }
+
+        node* temp = current;
+        current->preve->next = current->next;
+        current->next->preve = current->preve;
+        delete temp;
+        size--;
+    }
+
+    printLinkedList();
+}
+
+
+
+
+

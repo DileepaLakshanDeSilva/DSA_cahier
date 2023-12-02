@@ -54,7 +54,6 @@ void addItem(ItemList& list, int spaces, string item, int price)
 
 void MainMenu(int spaces) 
 {
-   // int result = 0;
 
     cout << endl;
     cout << setw(spaces) << "" << "        [0] Show your Items        " << endl;
@@ -62,10 +61,7 @@ void MainMenu(int spaces)
     cout << setw(spaces) << "" << "        [2] Remove All       " << endl;
     cout << setw(spaces) << "" << "        [3] PAY\n" << endl;
 
-  //  cout << setw(spaces) << "What do you want : ";
-  //  cin >> result;
-
-  //  return result;
+ 
 }
 
 int mainmenuInputHandler(string value, ItemList& list, int spaces)
@@ -141,13 +137,24 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
         cout << endl;
         int balance;
         balance = cash - price;
+        if (balance < 0) {
+            cout <<endl;
+            cout << setw(spaces) << "" << setw(spaces) << "Enter valid amount." << endl;
+            system("pause");
+            mainmenuInputHandler(value, list, spaces);
+        }
         cout << setw(spaces) << "             " << "Blance : ";
         cout << setw(spaces) << balance << endl;
         cout << endl;
 
+        list.fileWrite();
+
+        SetConsoleColor(FOREGROUND_GREEN );
         cout << setw(spaces) << "" << setw(spaces) << "Thank you for doing business with us." << endl;
         cout << endl;
         SetConsoleColor(FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED);
+        system("pause");
+       
 
         return 0;
     }
@@ -156,6 +163,7 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
         int price;
         cout << setw(spaces) << "" << "Item price : ";
         cin >> price;
+      
         cout << endl;
         addItem(list, spaces, value, price);
     }
@@ -178,13 +186,7 @@ int main()
     string item;
     int price;
 
-    cout << setw(spaces) << "" << "Enter Item Name : ";
-    cin >> item;
-    cout << endl;
-    cout << setw(spaces) << "" << "Item price : ";
-    cin >> price;
-    cout << endl;
-    addItem(list1, spaces, item, price);
+
  
 
     while (t)
@@ -194,6 +196,7 @@ int main()
         cout << setw(spaces) << "" << "Enter Item Name : ";
         cin >> item;
         cout << endl;
+
         t = mainmenuInputHandler(item, list1, spaces);
     }
 

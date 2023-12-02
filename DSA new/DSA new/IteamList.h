@@ -9,7 +9,7 @@ private:
 	node* head;
 	node* tail;
 	int size;
-//	fstream task;
+	fstream task;
 	const string text = "        HAPUGALA FOODCITY        ";
 	int textLength = text.length();
 
@@ -21,4 +21,5 @@ public:
 	void deleteTask(int pos);
 	void deleteTaskFirst();
 	void deleteTaskLast();
+	void fileWrite();
 };

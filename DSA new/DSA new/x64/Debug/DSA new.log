@@ -1,0 +1,9 @@
+﻿  DSA new.cpp
+C:\Users\parak\Documents\MEGA\MEGAsync\C_codes\vs_studio_cpp\DSA_Project\DSA_cahier\DSA new\DSA new\IteamList.h(14,6): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\parak\Documents\MEGA\MEGAsync\C_codes\vs_studio_cpp\DSA_Project\DSA_cahier\DSA new\DSA new\DSA new.cpp(19,46): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\parak\Documents\MEGA\MEGAsync\C_codes\vs_studio_cpp\DSA_Project\DSA_cahier\DSA new\DSA new\DSA new.cpp(172,52): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  IteamList.cpp
+C:\Users\parak\Documents\MEGA\MEGAsync\C_codes\vs_studio_cpp\DSA_Project\DSA_cahier\DSA new\DSA new\IteamList.h(14,6): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  node.cpp
+  Generating Code...
+  DSA new.vcxproj -> C:\Users\parak\Documents\MEGA\MEGAsync\C_codes\vs_studio_cpp\DSA_Project\DSA_cahier\DSA new\x64\Debug\DSA new.exe

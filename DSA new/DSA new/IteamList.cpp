@@ -4,6 +4,7 @@
 #include<fstream>
 #include <Windows.h>
 
+
 using namespace std;
 
 int GetConsoleWidth1()
@@ -43,8 +44,7 @@ void ItemList::insertItem(string Product, int Cost)
 		tail = temp;
 	}
 	size++;
-//	fileWrite();
-	//cout << "task added" << endl;
+	
 }
 
 int ItemList::printLinkedList()
@@ -114,11 +114,37 @@ void ItemList::deleteTaskLast()
 	else {
 		node* temp = tail;
 		tail = temp->preve;
-		//tail->next = NULL;
+		
 		delete temp;
 		size--;
-		//fileWrite();
+		
 	}
+}
+
+void ItemList::fileWrite()
+{
+	
+	task.open("Tasklist.xlsx", ios::app);
+
+	if (task.is_open())
+	{
+		node* curerent = head;
+		if (size == 0) {
+			
+			return;
+		}
+		for (int i = 0; i < size; i++) {
+			if (task.is_open()) {
+				task << curerent->product << endl;
+				task<< curerent->cost << endl;
+			}
+			
+			curerent = curerent->next;
+		}
+		task.close();
+		cout << endl;
+	}
+	
 }
 
 void ItemList::deleteTaskFirst()
@@ -132,7 +158,7 @@ void ItemList::deleteTaskFirst()
 		head->preve = NULL;
 		delete temp;
 		size--;
-		//fileWrite();
+		fileWrite();
 
 	}
 }

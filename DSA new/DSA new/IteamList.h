@@ -22,4 +22,5 @@ public:
 	void deleteTaskFirst();
 	void deleteTaskLast();
 	void fileWrite();
+	void fileRead();
 };

@@ -134,18 +134,47 @@ void ItemList::fileWrite()
 			return;
 		}
 		for (int i = 0; i < size; i++) {
-			if (task.is_open()) {
+			
 				task << curerent->product << endl;
 				task<< curerent->cost << endl;
-			}
+			
 			
 			curerent = curerent->next;
 		}
 		task.close();
 		cout << endl;
 	}
+	else {
+		cout << "File note opened" << endl;
+	}
 	
 }
+
+void ItemList::fileRead()
+{
+
+	fstream task;
+	task.open("Tasklist.txt", ios::in);
+	int consoleWidth = GetConsoleWidth1();
+	int space = (consoleWidth - textLength) / 2;
+	if (task.is_open()) {
+
+		if (task.peek() == std::ifstream::traits_type::eof()) {
+			std::cout << setw(space) << " " << "      The file is empty." << std::endl;
+		}
+		else {
+			std::cout << setw(space) << " " << "      The file is not empty." << std::endl;
+		}
+
+		/*string line;
+		while (getline(task, line)) {
+			createLinkedList(line);
+		}*/
+		task.close();
+	}
+}
+
+
 
 void ItemList::deleteTaskFirst()
 {

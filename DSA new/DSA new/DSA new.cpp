@@ -5,6 +5,7 @@
 #include <fstream>
 #include "IteamList.h"
 #include "node.h"
+#include "DSA new.h"
 
 using namespace std;
 
@@ -78,7 +79,7 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
     else if (value == "1")
     {
         int deletePos;
-        cout << setw(spaces) << "" << "        Plz enter what task dp you want to remove ?         ";
+        cout << setw(spaces) << "" << "        Plz enter what task you want to remove ?         ";
        
         cin >> deletePos;
         SetConsoleColor(FOREGROUND_GREEN);
@@ -97,55 +98,13 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
 
         int discountPercentage;
 
-        if (fullCost < 1000)
-        {
-            discountPercentage = 0;
-        }
-        else if (fullCost < 3000)
-        {
-            discountPercentage = 5;
-        }
-        else if (fullCost < 5000)
-        {
-            discountPercentage = 7;
-        }
-        else if (fullCost < 10000)
-        {
-            discountPercentage = 10;
-        }
-        else 
-        {
-            discountPercentage = 20;
-        }
+        DiscountCalculation(fullCost, discountPercentage);
 
         int discount = (fullCost * discountPercentage / 100);
         int price = fullCost - discount;
 
         cout << endl;
-        cout << setw(spaces) << "             " << "Discount ";
-        cout << setw(40) <<right<< discount << endl;
-        cout << endl;
-
-        cout << setw(spaces) << "             " << "Last Cost ";
-        cout << setw(40) << right<<price << endl;
-        cout << endl;
-
-        int cash;
-        cout << setw(spaces) << "             " << "Enter Cash: ";
-        cout << setw(spaces) << "";
-        cin >> cash;
-        cout << endl;
-        int balance;
-        balance = cash - price;
-        if (balance < 0) {
-            cout <<endl;
-            cout << setw(spaces) << "" << setw(spaces) << "Enter valid amount." << endl;
-            system("pause");
-            mainmenuInputHandler(value, list, spaces);
-        }
-        cout << setw(spaces) << "             " << "Blance : ";
-        cout << setw(spaces) << balance << endl;
-        cout << endl;
+        checkOut(spaces, discount, price, value, list);
 
         list.fileWrite();
 
@@ -160,15 +119,78 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
     }
     else
     {
-        int price;
-        cout << setw(spaces) << "" << "Item price : ";
-        cin >> price;
-      
-        cout << endl;
-        addItem(list, spaces, value, price);
+        checkout(spaces, list, value);
     }
 
     return 1;
+}
+
+void checkOut(int spaces, int discount, int price, std::string& value, ItemList& list)
+{
+    cout << setw(spaces) << "             " << "Discount ";
+    cout << setw(40) << right << discount << endl;
+    cout << endl;
+
+    cout << setw(spaces) << "             " << "Last Cost ";
+    cout << setw(40) << right << price << endl;
+    cout << endl;
+
+    int cash;
+    cout << setw(spaces) << "             " << "Enter Cash: ";
+    cout << setw(spaces) << "";
+    cin >> cash;
+    cout << endl;
+    int balance;
+    balance = cash - price;
+    if (balance < 0) {
+        cout << endl;
+        cout << setw(spaces) << "" << setw(spaces) << "Enter valid amount." << endl;
+        system("pause");
+        mainmenuInputHandler(value, list, spaces);
+    }
+    cout << setw(spaces) << "             " << "Blance : ";
+    cout << setw(spaces) << balance << endl;
+    cout << endl;
+}
+
+void DiscountCalculation(int fullCost, int& discountPercentage)
+{
+    if (fullCost < 1000)
+    {
+        discountPercentage = 0;
+    }
+    else if (fullCost < 3000)
+    {
+        discountPercentage = 5;
+    }
+    else if (fullCost < 5000)
+    {
+        discountPercentage = 7;
+    }
+    else if (fullCost < 10000)
+    {
+        discountPercentage = 10;
+    }
+    else
+    {
+        discountPercentage = 20;
+    }
+}
+
+void checkout(int spaces, ItemList& list, std::string& value)
+{
+    float price, oneItimePrice, itemCount;
+    cout << setw(spaces) << "" << "Item price : ";
+    SetConsoleColor(FOREGROUND_GREEN);
+    cin >> oneItimePrice;
+    SetConsoleColor(FOREGROUND_BLUE);
+    cout << setw(spaces) << "" << "How many Items Do you have : ";
+    SetConsoleColor(FOREGROUND_GREEN);
+    cin >> itemCount;
+    price = itemCount * oneItimePrice;
+    cout << endl;
+    SetConsoleColor(FOREGROUND_BLUE);
+    addItem(list, spaces, value, price);
 }
 
 
@@ -194,7 +216,9 @@ int main()
         MainMenu(spaces);
 
         cout << setw(spaces) << "" << "Enter Item Name : ";
+        SetConsoleColor(FOREGROUND_GREEN);
         cin >> item;
+        SetConsoleColor(FOREGROUND_BLUE);
         cout << endl;
 
         t = mainmenuInputHandler(item, list1, spaces);

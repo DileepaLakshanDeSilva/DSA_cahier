@@ -3,6 +3,7 @@
 #include<string>
 #include<fstream>
 #include <Windows.h>
+#include<vector>
 
 
 using namespace std;
@@ -32,19 +33,19 @@ void ItemList::insertItem(string Product, int Cost)
 
 	node* temp = new node(Product, Cost);
 
-	if (size == 0) 
+	if (size == 0)
 	{
 		head = tail = temp;
 
 	}
-	else 
+	else
 	{
 		tail->next = temp;
 		temp->preve = tail;
 		tail = temp;
 	}
 	size++;
-	
+
 }
 
 int ItemList::printLinkedList()
@@ -64,8 +65,8 @@ int ItemList::printLinkedList()
 		return 0;
 	}
 
-	cout << setw(space) << "         " << "ITEM" << setw(12) <<right<< "                                                   PRICE" << endl;
-	cout << setw(space) << "         " << "----" << setw(12) <<right<< "                                                   -----" << endl;
+	cout << setw(space) << "         " << "ITEM" << setw(12) << right << "                                                   PRICE" << endl;
+	cout << setw(space) << "         " << "----" << setw(12) << right << "                                                   -----" << endl;
 
 	for (int i = 0; i < size; i++)
 	{
@@ -95,11 +96,11 @@ void ItemList::claerFile()
 	}
 	for (int i = 0; i < size; i++)
 	{
-		
-			node* temp = NULL;
-			temp = curerent;
-			curerent = curerent->next;
-			delete temp;
+
+		node* temp = NULL;
+		temp = curerent;
+		curerent = curerent->next;
+		delete temp;
 
 	}
 	size = 0;
@@ -114,31 +115,31 @@ void ItemList::deleteTaskLast()
 	else {
 		node* temp = tail;
 		tail = temp->preve;
-		
+
 		delete temp;
 		size--;
-		
+
 	}
 }
 
 void ItemList::fileWrite()
 {
-	
+
 	task.open("Tasklist.xlsx", ios::app);
 
 	if (task.is_open())
 	{
 		node* curerent = head;
 		if (size == 0) {
-			
+
 			return;
 		}
 		for (int i = 0; i < size; i++) {
-			
-				task << curerent->product << endl;
-				task<< curerent->cost << endl;
-			
-			
+
+			task << curerent->product << endl;
+			task << curerent->cost << endl;
+
+
 			curerent = curerent->next;
 		}
 		task.close();
@@ -147,34 +148,42 @@ void ItemList::fileWrite()
 	else {
 		cout << "File note opened" << endl;
 	}
-	
+
 }
 
-void ItemList::fileRead()
+void ItemList::fileRead(string text)
 {
 
 	fstream task;
-	task.open("Tasklist.txt", ios::in);
+	task.open("Tasklist.xlsx", ios::in);
 	int consoleWidth = GetConsoleWidth1();
 	int space = (consoleWidth - textLength) / 2;
 	if (task.is_open()) {
 
-		if (task.peek() == std::ifstream::traits_type::eof()) {
-			std::cout << setw(space) << " " << "      The file is empty." << std::endl;
-		}
-		else {
-			std::cout << setw(space) << " " << "      The file is not empty." << std::endl;
-		}
 
-		/*string line;
+
+		string line;
+		int count = 0;
 		while (getline(task, line)) {
-			createLinkedList(line);
-		}*/
+
+			searchItem(line, text, count);
+
+		}
 		task.close();
+		SetConsoleColor1(FOREGROUND_GREEN);
+		cout << endl;
+		std::cout << setw(space) << count << " Time sold" << std::endl;
+		SetConsoleColor1(FOREGROUND_BLUE);
 	}
 }
 
+void ItemList::searchItem(string line, string PassText, int& count)
+{
 
+	if (PassText == line) {
+		count++;
+	}
+}
 
 void ItemList::deleteTaskFirst()
 {
@@ -194,39 +203,34 @@ void ItemList::deleteTaskFirst()
 
 void ItemList::deleteTask(int pos)
 {
-    if (pos <= 0 || pos > size)
-    {
-        cout << "Position is invalid" << endl;
-        return;
-    }
+	if (pos <= 0 || pos > size)
+	{
+		cout << "Position is invalid" << endl;
+		return;
+	}
 
-    if (size == 1 || pos == 1)
-    {
-        deleteTaskFirst();
-    }
-    else if (pos == size)
-    {
-        deleteTaskLast();
-    }
-    else
-    {
-        node* current = head;
-        for (int i = 0; i < pos - 1; i++)
-        {
-            current = current->next;
-        }
+	if (size == 1 || pos == 1)
+	{
+		deleteTaskFirst();
+	}
+	else if (pos == size)
+	{
+		deleteTaskLast();
+	}
+	else
+	{
+		node* current = head;
+		for (int i = 0; i < pos - 1; i++)
+		{
+			current = current->next;
+		}
 
-        node* temp = current;
-        current->preve->next = current->next;
-        current->next->preve = current->preve;
-        delete temp;
-        size--;
-    }
+		node* temp = current;
+		current->preve->next = current->next;
+		current->next->preve = current->preve;
+		delete temp;
+		size--;
+	}
 
-    printLinkedList();
+	printLinkedList();
 }
-
-
-
-
-

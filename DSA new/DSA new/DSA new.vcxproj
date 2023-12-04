@@ -139,13 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="caffe.cpp" />
     <ClCompile Include="DSA new.cpp" />
     <ClCompile Include="IteamList.cpp" />
     <ClCompile Include="node.cpp" />
+    <ClCompile Include="Queue.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="caffe.h" />
     <ClInclude Include="IteamList.h" />
     <ClInclude Include="node.h" />
+    <ClInclude Include="Queue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

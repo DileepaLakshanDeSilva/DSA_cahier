@@ -6,10 +6,14 @@
 #include "IteamList.h"
 #include "node.h"
 #include "DSA new.h"
+#include "caffe.h"
+#include "Queue.h"
 
 using namespace std;
 
-void SetConsoleColor(int color) 
+QueueArray A1(20);
+
+void SetConsoleColor(int color)
 {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
@@ -24,7 +28,7 @@ void drawHirizontalLine(int cWidth)
 
 
 
-int GetConsoleWidth() 
+int GetConsoleWidth()
 {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
@@ -32,7 +36,7 @@ int GetConsoleWidth()
 }
 
 
-void drawHeader(int spaces, int consoleWidth, string text) 
+void drawHeader(int spaces, int consoleWidth, string text)
 {
     SetConsoleColor(FOREGROUND_BLUE);
 
@@ -48,39 +52,52 @@ void drawHeader(int spaces, int consoleWidth, string text)
 
 void addItem(ItemList& list, int spaces, string item, int price)
 {
-   list.insertItem(item, price);
+    list.insertItem(item, price);
+}
+
+void caffe()
+{
+
+    string text = "        HAPUGALA CAFFE        ";
+    int consoleWidth = GetConsoleWidth();
+    int spaces = (consoleWidth - text.length()) / 2;
+    drawHeader(spaces, consoleWidth, text);
+    caffeitam(spaces, &A1);
+
+
 }
 
 
-
-void MainMenu(int spaces) 
+void MainMenu(int spaces)
 {
 
     cout << endl;
     cout << setw(spaces) << "" << "        [0] Show your Items        " << endl;
     cout << setw(spaces) << "" << "        [1] Remove a Item          " << endl;
     cout << setw(spaces) << "" << "        [2] Remove All       " << endl;
-    cout << setw(spaces) << "" << "        [3] PAY\n" << endl;
+    cout << setw(spaces) << "" << "        [3] PAY" << endl;
+    cout << setw(spaces) << "" << "        [4] Sarch in histroy" << endl;
+    cout << setw(spaces) << "" << "        [5] GO Caffee\n" << endl;
 
- 
+
 }
 
 int mainmenuInputHandler(string value, ItemList& list, int spaces)
 {
-    
+
 
     if (value == "0")
     {
         SetConsoleColor(FOREGROUND_GREEN);
         list.printLinkedList();
         SetConsoleColor(FOREGROUND_BLUE);
-        
+
     }
     else if (value == "1")
     {
         int deletePos;
         cout << setw(spaces) << "" << "        Plz enter what task you want to remove ?         ";
-       
+
         cin >> deletePos;
         SetConsoleColor(FOREGROUND_GREEN);
         list.deleteTask(deletePos);
@@ -88,7 +105,11 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
     }
     else if (value == "2")
     {
-      list.claerFile();
+        list.claerFile();
+    }
+    else if (value == "5")
+    {
+        caffe();
     }
     else if (value == "3")
     {
@@ -108,14 +129,22 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
 
         list.fileWrite();
 
-        SetConsoleColor(FOREGROUND_GREEN );
+        SetConsoleColor(FOREGROUND_GREEN);
         cout << setw(spaces) << "" << setw(spaces) << "Thank you for doing business with us." << endl;
         cout << endl;
         SetConsoleColor(FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED);
         system("pause");
-       
+
 
         return 0;
+    }
+    else if (value == "4") {
+        string text;
+        cout << setw(spaces) << "What good search ? :";
+        SetConsoleColor(FOREGROUND_GREEN);
+        cin >> text;
+        SetConsoleColor(FOREGROUND_BLUE);
+        list.fileRead(text);
     }
     else
     {
@@ -209,7 +238,7 @@ int main()
     int price;
 
 
- 
+
 
     while (t)
     {

@@ -22,5 +22,7 @@ public:
 	void deleteTaskFirst();
 	void deleteTaskLast();
 	void fileWrite();
-	void fileRead();
+	void fileRead(string text);
+	void searchItem(string line, string text, int& count);
+	//void craeteArray(string line);
 };

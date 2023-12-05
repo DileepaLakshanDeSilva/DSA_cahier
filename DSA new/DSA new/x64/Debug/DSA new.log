@@ -1,10 +1,2 @@
-﻿  DSA new.cpp
-F:\DSA_cahier-main\DSA new\DSA new\IteamList.h(14,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'DSA%20new.cpp')
-  
-F:\DSA_cahier-main\DSA new\DSA new\DSA new.cpp(24,16): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-F:\DSA_cahier-main\DSA new\DSA new\DSA new.cpp(63,16): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-F:\DSA_cahier-main\DSA new\DSA new\DSA new.cpp(222,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-F:\DSA_cahier-main\DSA new\DSA new\DSA new.cpp(233,16): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-F:\DSA_cahier-main\DSA new\DSA new\DSA new.cpp(238,9): warning C4101: 'price': unreferenced local variable
-  DSA new.vcxproj -> F:\DSA_cahier-main\DSA new\x64\Debug\DSA new.exe
+﻿  caffe.cpp
+  DSA new.vcxproj -> D:\DSA\DSA_cahier\DSA new\x64\Debug\DSA new.exe

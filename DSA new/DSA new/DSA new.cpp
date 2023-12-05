@@ -65,13 +65,7 @@ void caffe()
     caffeitam(spaces, &A1);
 
     system("cls");
-    /*
-    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-    string text = "        HAPUGALA FOODCITY        ";
-    int consoleWidth = GetConsoleWidth();
-    int spaces = (consoleWidth - text.length()) / 2;
-    drawHeader(spaces, consoleWidth, text);
-    */
+   
 }
 
 
@@ -191,6 +185,7 @@ void checkOut(int spaces, int discount, int price, std::string& value, ItemList&
         cout << setw(spaces) << "" << setw(spaces) << "Enter valid amount." << endl;
         system("pause");
         mainmenuInputHandler(value, list, spaces);
+        return;
     }
     cout << setw(spaces) << "             " << "Blance :       ";  
     cout << setw(spaces) << balance << endl;

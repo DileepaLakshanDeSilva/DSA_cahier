@@ -79,7 +79,7 @@ int ItemList::printLinkedList()
 	cout << endl;
 
 	SetConsoleColor1(FOREGROUND_RED);
-	cout << setw(space) << "         " << "TOTAL COST IS :";
+	cout << setw(space) << "         " << "TOTAL COST IS :   ";
 	cout << setw(40) << right << totalCost << endl;
 	SetConsoleColor1(FOREGROUND_GREEN);
 	return totalCost;

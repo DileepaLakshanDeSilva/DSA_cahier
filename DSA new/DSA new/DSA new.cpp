@@ -64,7 +64,14 @@ void caffe()
     drawHeader(spaces, consoleWidth, text);
     caffeitam(spaces, &A1);
 
-
+    system("cls");
+    /*
+    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+    string text = "        HAPUGALA FOODCITY        ";
+    int consoleWidth = GetConsoleWidth();
+    int spaces = (consoleWidth - text.length()) / 2;
+    drawHeader(spaces, consoleWidth, text);
+    */
 }
 
 
@@ -88,6 +95,7 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
 
     if (value == "0")
     {
+        system("cls");
         SetConsoleColor(FOREGROUND_GREEN);
         list.printLinkedList();
         SetConsoleColor(FOREGROUND_BLUE);
@@ -109,7 +117,14 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
     }
     else if (value == "5")
     {
+        system("cls");
+        
         caffe();
+        string text = "        HAPUGALA FOODCITY        ";
+        int consoleWidth = GetConsoleWidth();
+        int spaces = (consoleWidth - text.length()) / 2;
+        drawHeader(spaces, consoleWidth, text);
+
     }
     else if (value == "3")
     {

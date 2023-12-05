@@ -23,7 +23,9 @@ void caffeitam(int spaces, QueueArray* Queue)
 		cout << setw(spaces) << "" << "        [0] GO FOODCITY       " << endl;
 		cout << setw(spaces) << "" << "        [1] Place Order       " << endl;
 		cout << setw(spaces) << "" << "        [2] Visit Orders       " << endl;
-
+		cout << endl;
+		cout << endl;
+		SetConsoleColor4(FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 		cout << setw(spaces) << "" << "Enter Number : " ;
 		SetConsoleColor4(FOREGROUND_GREEN);
 		int num;
@@ -50,9 +52,19 @@ void caffeitam(int spaces, QueueArray* Queue)
 		}
 		else if (num == 2)
 		{
+			system("cls");
+			cout << "\n\n\n";
+			SetConsoleColor4(FOREGROUND_GREEN);
+			cout << setw(spaces) << "" << "        " << "**** NEXT ORDER ****\n\n";
+			SetConsoleColor4(FOREGROUND_RED);
+			cout << setw(spaces) << "" << "        ";
 			Queue->print();
+			cout << endl;
+			SetConsoleColor4(FOREGROUND_BLUE);
 			cout << setw(spaces) << "" << "        [0] Back       " << endl;
 			cout << setw(spaces) << "" << "        [1] Finish Order       " << endl;
+			cout << endl;
+			SetConsoleColor4(FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 			cout << setw(spaces) << "" << "Enter Number : ";
 			SetConsoleColor4(FOREGROUND_GREEN);
 			int num2;
@@ -62,12 +74,16 @@ void caffeitam(int spaces, QueueArray* Queue)
 
 			if (num2 == 1)
 			{
+				SetConsoleColor4(FOREGROUND_RED);
+				cout << setw(spaces) << "" << "        ";
 				Queue->deQueue();
+				SetConsoleColor4(FOREGROUND_BLUE);
 			}
 
 		}
 		else
 		{
+			SetConsoleColor4(FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 			cout << "Please enter number again" << endl;
 		}
 	}

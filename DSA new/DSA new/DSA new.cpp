@@ -83,8 +83,8 @@ void MainMenu(int spaces)
     cout << setw(spaces) << "" << "        [1] Remove a Item          " << endl;
     cout << setw(spaces) << "" << "        [2] Remove All       " << endl;
     cout << setw(spaces) << "" << "        [3] PAY" << endl;
-    cout << setw(spaces) << "" << "        [4] Search in history" << endl;
-    cout << setw(spaces) << "" << "        [5] GO Caffe\n" << endl;
+    cout << setw(spaces) << "" << "        [4] Sarch in histroy" << endl;
+    cout << setw(spaces) << "" << "        [5] GO Caffee\n" << endl;
 
 
 }
@@ -171,11 +171,11 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
 
 void checkOut(int spaces, int discount, int price, std::string& value, ItemList& list)
 {
-    cout << setw(spaces) << "             " << "Discount ";
+    cout << setw(spaces) << "             " << "Discount          ";
     cout << setw(40) << right << discount << endl;
     cout << endl;
 
-    cout << setw(spaces) << "             " << "Last Cost ";
+    cout << setw(spaces) << "             " << "Last Cost         ";
     cout << setw(40) << right << price << endl;
     cout << endl;
 
@@ -191,10 +191,8 @@ void checkOut(int spaces, int discount, int price, std::string& value, ItemList&
         cout << setw(spaces) << "" << setw(spaces) << "Enter valid amount." << endl;
         system("pause");
         mainmenuInputHandler(value, list, spaces);
-        return;
     }
-    
-    cout << setw(spaces) << "             " << "Blance : ";
+    cout << setw(spaces) << "             " << "Blance :       ";  
     cout << setw(spaces) << balance << endl;
     cout << endl;
 }

@@ -1,15 +1,20 @@
 #pragma once
 #include <iostream>
-#include<string>
+#include <string>
+
 using namespace std;
+
 class node
 {
 public:
-	string product;
-	int cost;
-	node* next, * preve;
+    string product;
+    int cost;
+    node* next, * preve;
 
+    // Constructors
+    node();  // Default constructor
+    node(string Product, int Cost);  // Overloaded constructor
 
-	node();//defalt contructore
-	node(string Product, int Cost);//overloaded constructore
+    // Destructor
+    ~node();  // Destructor
 };

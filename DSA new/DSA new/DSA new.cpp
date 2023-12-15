@@ -11,13 +11,16 @@
 
 using namespace std;
 
+// Global QueueArray object A1
 QueueArray A1(20);
 
+// Function to set console text color
 void SetConsoleColor(int color)
 {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
+// Function to draw a horizontal line centered on the console
 void drawHirizontalLine(int cWidth)
 {
     string line = "----------------------------------------";
@@ -26,8 +29,7 @@ void drawHirizontalLine(int cWidth)
     SetConsoleColor(FOREGROUND_BLUE);
 }
 
-
-
+// Function to get the width of the console
 int GetConsoleWidth()
 {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
@@ -35,29 +37,27 @@ int GetConsoleWidth()
     return csbi.dwSize.X;
 }
 
-
+// Function to draw a header with a centered text
 void drawHeader(int spaces, int consoleWidth, string text)
 {
     SetConsoleColor(FOREGROUND_BLUE);
-
-
     drawHirizontalLine(consoleWidth);
     SetConsoleColor(FOREGROUND_RED);
     cout << setw(spaces) << "" << text << endl;
     SetConsoleColor(FOREGROUND_BLUE);
     drawHirizontalLine(consoleWidth);
-
 }
 
-
+// Function to add an item to the ItemList
 void addItem(ItemList& list, int spaces, string item, int price)
 {
     list.insertItem(item, price);
 }
 
+// Function for the cafe menu
 void caffe()
 {
-
+    // Display cafe header
     string text = "        HAPUGALA CAFFE        ";
     int consoleWidth = GetConsoleWidth();
     int spaces = (consoleWidth - text.length()) / 2;
@@ -65,41 +65,36 @@ void caffe()
     caffeitam(spaces, &A1);
 
     system("cls");
-   
 }
 
-
+// Function to display main menu options
 void MainMenu(int spaces)
 {
-
     cout << endl;
     cout << setw(spaces) << "" << "        [0] Show your Items        " << endl;
     cout << setw(spaces) << "" << "        [1] Remove a Item          " << endl;
     cout << setw(spaces) << "" << "        [2] Remove All       " << endl;
     cout << setw(spaces) << "" << "        [3] PAY" << endl;
-    cout << setw(spaces) << "" << "        [4] Sarch in histroy" << endl;
+    cout << setw(spaces) << "" << "        [4] Search in history" << endl;
     cout << setw(spaces) << "" << "        [5] GO Caffee\n" << endl;
-
-
 }
 
+// Function to handle user input for main menu
 int mainmenuInputHandler(string value, ItemList& list, int spaces)
 {
-
-
     if (value == "0")
     {
+        // Show items
         system("cls");
         SetConsoleColor(FOREGROUND_GREEN);
         list.printLinkedList();
         SetConsoleColor(FOREGROUND_BLUE);
-
     }
     else if (value == "1")
     {
+        // Remove an item
         int deletePos;
         cout << setw(spaces) << "" << "        Plz enter what task you want to remove ?         ";
-
         cin >> deletePos;
         SetConsoleColor(FOREGROUND_GREEN);
         list.deleteTask(deletePos);
@@ -107,27 +102,27 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
     }
     else if (value == "2")
     {
+        // Remove all items
         list.claerFile();
     }
     else if (value == "5")
     {
+        // Go to cafe
         system("cls");
-        
         caffe();
         string text = "        HAPUGALA FOODCITY        ";
         int consoleWidth = GetConsoleWidth();
         int spaces = (consoleWidth - text.length()) / 2;
         drawHeader(spaces, consoleWidth, text);
-
     }
     else if (value == "3")
     {
+        // Checkout and payment
         SetConsoleColor(FOREGROUND_GREEN);
         int fullCost = list.printLinkedList();
         SetConsoleColor(FOREGROUND_RED);
 
         int discountPercentage;
-
         DiscountCalculation(fullCost, discountPercentage);
 
         int discount = (fullCost * discountPercentage / 100);
@@ -144,10 +139,10 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
         SetConsoleColor(FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED);
         system("pause");
 
-
         return 0;
     }
     else if (value == "4") {
+        // Search in history
         string text;
         cout << setw(spaces) << "What good search ? :";
         SetConsoleColor(FOREGROUND_GREEN);
@@ -157,12 +152,14 @@ int mainmenuInputHandler(string value, ItemList& list, int spaces)
     }
     else
     {
+        // Add item to the cart
         checkout(spaces, list, value);
     }
 
     return 1;
 }
 
+// Function to handle checkout process
 void checkOut(int spaces, int discount, int price, std::string& value, ItemList& list)
 {
     cout << setw(spaces) << "             " << "Discount          ";
@@ -182,16 +179,17 @@ void checkOut(int spaces, int discount, int price, std::string& value, ItemList&
     balance = cash - price;
     if (balance < 0) {
         cout << endl;
-        cout << setw(spaces) << "" << setw(spaces) << "Enter valid amount." << endl;
+        cout << setw(spaces) << "" << setw(spaces) << "Enter a valid amount." << endl;
         system("pause");
         mainmenuInputHandler(value, list, spaces);
         return;
     }
-    cout << setw(spaces) << "             " << "Blance :       ";  
+    cout << setw(spaces) << "             " << "Balance :       ";
     cout << setw(spaces) << balance << endl;
     cout << endl;
 }
 
+// Function to calculate discount based on total cost
 void DiscountCalculation(int fullCost, int& discountPercentage)
 {
     if (fullCost < 1000)
@@ -216,6 +214,7 @@ void DiscountCalculation(int fullCost, int& discountPercentage)
     }
 }
 
+// Function to handle adding items to the cart
 void checkout(int spaces, ItemList& list, std::string& value)
 {
     float price, oneItimePrice, itemCount;
@@ -232,26 +231,27 @@ void checkout(int spaces, ItemList& list, std::string& value)
     addItem(list, spaces, value, price);
 }
 
-
 int main()
 {
+    // Initialize console
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
     int t = 1;
 
+    // Display main header
     string text = "        HAPUGALA FOODCITY        ";
     int consoleWidth = GetConsoleWidth();
     int spaces = (consoleWidth - text.length()) / 2;
     drawHeader(spaces, consoleWidth, text);
 
+    // Create ItemList object
     ItemList list1;
     string item;
     int price;
 
-
-
-
+    // Main program loop
     while (t)
     {
+        // Display main menu
         MainMenu(spaces);
 
         cout << setw(spaces) << "" << "Enter Item Name : ";
@@ -260,7 +260,7 @@ int main()
         SetConsoleColor(FOREGROUND_BLUE);
         cout << endl;
 
+        // Handle user input for main menu
         t = mainmenuInputHandler(item, list1, spaces);
     }
-
 }

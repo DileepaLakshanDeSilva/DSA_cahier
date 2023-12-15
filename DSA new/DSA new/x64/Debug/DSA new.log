@@ -1,9 +1,14 @@
 ﻿  DSA new.cpp
 C:\Users\parak\Desktop\dsaProject\DSA_cahier\DSA new\DSA new\IteamList.h(14,6): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\parak\Desktop\dsaProject\DSA_cahier\DSA new\DSA new\DSA new.cpp(24,46): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\parak\Desktop\dsaProject\DSA_cahier\DSA new\DSA new\DSA new.cpp(27,46): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\parak\Desktop\dsaProject\DSA_cahier\DSA new\DSA new\DSA new.cpp(63,52): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\parak\Desktop\dsaProject\DSA_cahier\DSA new\DSA new\DSA new.cpp(125,56): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\parak\Desktop\dsaProject\DSA_cahier\DSA new\DSA new\DSA new.cpp(238,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\parak\Desktop\dsaProject\DSA_cahier\DSA new\DSA new\DSA new.cpp(249,52): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\parak\Desktop\dsaProject\DSA_cahier\DSA new\DSA new\DSA new.cpp(254,9): warning C4101: 'price': unreferenced local variable
+C:\Users\parak\Desktop\dsaProject\DSA_cahier\DSA new\DSA new\DSA new.cpp(115,56): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\parak\Desktop\dsaProject\DSA_cahier\DSA new\DSA new\DSA new.cpp(231,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\parak\Desktop\dsaProject\DSA_cahier\DSA new\DSA new\DSA new.cpp(243,52): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\parak\Desktop\dsaProject\DSA_cahier\DSA new\DSA new\DSA new.cpp(249,9): warning C4101: 'price': unreferenced local variable
+  IteamList.cpp
+C:\Users\parak\Desktop\dsaProject\DSA_cahier\DSA new\DSA new\IteamList.h(14,6): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  caffe.cpp
+  node.cpp
+  Generating Code...
   DSA new.vcxproj -> C:\Users\parak\Desktop\dsaProject\DSA_cahier\DSA new\x64\Debug\DSA new.exe

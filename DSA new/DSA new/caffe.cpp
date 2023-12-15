@@ -6,13 +6,13 @@
 
 using namespace std;
 
+// Function to set console text color
 void SetConsoleColor4(int color)
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
-
-
+// Function to handle cafe items and orders
 void caffeitam(int spaces, QueueArray* Queue)
 {
 	int t = 1;
@@ -26,7 +26,7 @@ void caffeitam(int spaces, QueueArray* Queue)
 		cout << endl;
 		cout << endl;
 		SetConsoleColor4(FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-		cout << setw(spaces) << "" << "Enter Number : " ;
+		cout << setw(spaces) << "" << "Enter Number : ";
 		SetConsoleColor4(FOREGROUND_GREEN);
 		int num;
 		cin >> num;
@@ -39,6 +39,7 @@ void caffeitam(int spaces, QueueArray* Queue)
 		}
 		else if (num == 1)
 		{
+			// Place Order
 			cout << setw(spaces) << "" << "Enter Order : ";
 			SetConsoleColor4(FOREGROUND_GREEN);
 			string order;
@@ -46,12 +47,12 @@ void caffeitam(int spaces, QueueArray* Queue)
 			SetConsoleColor4(FOREGROUND_BLUE);
 			cout << endl;
 
+			// Enqueue the order
 			Queue->enQueue(order);
-			
-			
 		}
 		else if (num == 2)
 		{
+			// Visit Orders
 			system("cls");
 			cout << "\n\n\n";
 			SetConsoleColor4(FOREGROUND_GREEN);
@@ -74,15 +75,16 @@ void caffeitam(int spaces, QueueArray* Queue)
 
 			if (num2 == 1)
 			{
+				// Finish Order
 				SetConsoleColor4(FOREGROUND_RED);
 				cout << setw(spaces) << "" << "        ";
 				Queue->deQueue();
 				SetConsoleColor4(FOREGROUND_BLUE);
 			}
-
 		}
 		else
 		{
+			// Invalid input
 			SetConsoleColor4(FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 			cout << "Please enter number again" << endl;
 		}
